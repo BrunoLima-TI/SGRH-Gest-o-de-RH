@@ -1,0 +1,29 @@
+# SGRH — Sistema de Gestão de Recursos Humanos
+# Reescreve todas as URLs para o front controller (index.php).
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Não reescreve arquivos e diretórios existentes (assets, uploads, etc.)
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+
+    # Demais URLs vão para o front controller
+    RewriteRule ^ index.php [QSA,L]
+</IfModule>
+
+<IfModule mod_dir.c>
+    DirectoryIndex index.php index.html
+</IfModule>
+
+# Bloqueia acesso direto a pastas internas
+<IfModule mod_rewrite.c>
+    RewriteRule ^(app|config|database|storage)/ - [F,L]
+</IfModule>
+
+<FilesMatch "^\.(htaccess|htpasswd|env|gitignore)$">
+    Require all denied
+</FilesMatch>
+
+Options -Indexes

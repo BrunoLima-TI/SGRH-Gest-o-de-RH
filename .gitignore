@@ -1,0 +1,28 @@
+# Sistema / dependências
+/vendor/
+/node_modules/
+
+# Banco de dados gerado pela instalação
+/storage/*
+!/storage/.htaccess
+/storage/instalado.txt
+
+# Uploads de documentos
+/uploads/*
+!/uploads/.htaccess
+
+# Ambiente / segredos
+.env
+.env.local
+config/config.local.php
+
+# Logs
+*.log
+/logs/
+
+# Sistema operacional / editores
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
